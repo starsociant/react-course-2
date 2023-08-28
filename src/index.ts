@@ -1,98 +1,87 @@
-const message: string = "Hello world";
-const numbers: Array<number> = [1, 2];
-const person: PersonType = { name: "Saulo", age: 27 };
-console.log(message, numbers, person);
+// Basic types
+const peopleName: string = "Saulo";
+const height: number = 173;
+const isPresenting: boolean = true;
+
+// Function & params
+const arrowGreeting = (name: string): string => name;
+function greeting(name: string) {
+  return `Hello, ${name}`;
+}
+
+// Array & object type
+const fruits: Array<string> = ["banana"];
+const people: object = {};
+
+// Type
+interface PersonInterface {
+  name: string;
+  height: number;
+}
 
 type SafeNumber = number | `${number}`;
 
-enum Height {
-  NONE,
-  SHORT = "SHORT",
-  AVG = "AVG",
-  LONG = "LONG",
-}
-
-console.log(Height.NONE);
-console.log(Height.SHORT);
-console.log(Height.AVG);
-console.log(Height.LONG);
-
+// Interfaces
 type PersonType = {
   name: string;
-  age: SafeNumber;
-  email?: string;
-  height?: Height;
+  height: SafeNumber;
+  devTime?: DevTime;
+  group?: PersonInterface[];
 };
 
-const anotherPerson: PersonType = {
-  name: "Tarso",
-  age: 27,
-  email: "tarso@email.com",
-  height: 0,
-  // cpf: '12345678909'
+// Enums
+enum DevTime {
+  BEGINNER = "BEGINNER",
+  MIDLEVEL = "MIDLEVEL",
+  EXPERT = "EXPERT",
+}
+
+const person: PersonType = {
+  name: "Saulo",
+  height: 173,
+  devTime: DevTime.MIDLEVEL,
 };
 
-const anotherPerson1: PersonType = {
+const person2: PersonType = {
   name: "Tarso",
-  age: 27,
-  email: "tarso@email.com",
-  // height: "NONE",
-};
-const anotherPerson2: PersonType = {
-  name: "Tarso",
-  age: 27,
-  email: "tarso@email.com",
-  height: Height.NONE,
+  height: 173,
 };
 
-type GroupType = {
+// Inheritance
+interface GroupInterface {
   members: PersonType[];
+}
+
+const group1: GroupInterface = {
+  members: [person],
 };
 
-const myGroups: GroupType = {
-  members: [
-    {
-      name: "Saulo",
-      age: 27,
-    },
-    {
-      name: "Saulo",
-      age: "27",
-    },
-  ],
-};
-
-interface NamedGroupInterface extends GroupType {
+interface NamedGroupInterface extends GroupInterface {
   name: string;
 }
 
 const namedGroup: NamedGroupInterface = {
-  name: "React Training Group",
+  name: "React",
   members: [],
 };
 
-type FocusedGroupType = GroupType & { focus: string; count?: number };
+// Custom Functions
+type UnnamedCountedInterface = Omit<NamedGroupInterface, "name"> & {
+  count: number;
+};
 
-const focusedGroup: FocusedGroupType = {
+type PlainGroupInterface = Pick<NamedGroupInterface, "members">;
+
+const countedGroup: UnnamedCountedInterface = {
   members: [],
-  focus: "React",
+  count: 0,
+  // name: "string",
 };
 
-const createGroup = (
-  people: PersonType[],
-  name: string = null
-): GroupType | NamedGroupInterface => {
-  if (!name) {
-    return {
-      members: people,
-    };
-  }
+interface DevTeamInterface {
+  BEGINNER: PersonType[];
+  MIDLEVEL: PersonType[];
+  EXPERT: PersonType[];
+}
 
-  return {
-    name,
-    members: people,
-  };
-};
-
-const newGroup = createGroup([person], "new");
-console.log(newGroup);
+type DevTeamType = Record<DevTime, PersonType>;
