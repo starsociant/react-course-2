@@ -1,3 +1,5 @@
+import styles from "./Header.module.css";
+
 export interface NavItemProps {
   label: string;
   url: string;
@@ -6,7 +8,9 @@ export interface NavItemProps {
 export default function NavItem({ url, label }: NavItemProps) {
   return (
     <li>
-      <a href={url}>{label}</a>
+      <a className={styles.ListItem} href={url}>
+        {label}
+      </a>
     </li>
   );
 }

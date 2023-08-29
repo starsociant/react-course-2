@@ -1,27 +1,25 @@
-import NavItem, { NavItemProps } from "./NavItem";
+import NavItem from "./NavItem";
+import styles from "./Header.module.css";
+import { NavItemInterface } from "../../interfaces";
 
 interface HeaderProps {
   name?: string;
-  navItems: NavItemProps[];
+  navItems: NavItemInterface[];
 }
 
 export default function Header({ name, navItems }: HeaderProps) {
   return (
-    <>
-      <div>Hello Bar</div>
-      <header>
-        <div className="container">
-          <nav>
-            <ul>
-              {navItems.map((item) => (
-                // <NavItem label={item.label} url={item.url}></NavItem>
-                <NavItem {...item}></NavItem>
-              ))}
-            </ul>
-          </nav>
-          {name ? <div className="greeting-0">Olá {name}</div> : null}
-        </div>
-      </header>
-    </>
+    <header className={styles.Header}>
+      <div className={styles.Container}>
+        <nav>
+          <ul className={`${styles.List}`}>
+            {navItems.map((item, i) => (
+              <NavItem {...item}></NavItem>
+            ))}
+          </ul>
+        </nav>
+        {name ? <div className="greeting">Olá {name}</div> : null}
+      </div>
+    </header>
   );
 }

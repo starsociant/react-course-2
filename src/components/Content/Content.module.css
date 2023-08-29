@@ -1,0 +1,8 @@
+.H1 {
+  text-align: center;
+  color: var(--secondary);
+  font-size: clamp(3.75rem, 7.5vw, 8rem);
+  -webkit-text-stroke: 4px var(--primary);
+  letter-spacing: 0.35rem;
+  font-family: PokemonSolid;
+}

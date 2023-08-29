@@ -1,13 +1,86 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700;900&display=swap");
+@font-face {
+  font-family: PokemonSolid;
+  src: url(./assets/fonts/pokemon-solid.ttf) format("truetype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --primary: #3c5aa6;
+  --secondary: #ffcb05;
+  --light-blue: #2a75bb;
+  --dark-yellow: #c7a008;
+  --white: #fff;
+  --black: #000;
+  --light: #fafafa;
+  --dark: #282828;
+}
+
+body {
+  margin: 0;
+  background-color: #fafafa;
+  font-family: Roboto, sans-serif;
+}
+
+.font-pokemon {
+  font-family: PokemonSolid;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-size: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.type.type--bug {
+  background-color: #8bd674;
+}
+
+.type.type--electric {
+  background-color: #f2cb55;
+}
+
+.type.type--fire {
+  background-color: #ff9448;
+}
+
+.type.type--flying {
+  background-color: #829edb;
+}
+
+.type.type--grass {
+  background-color: #8bbe8a;
+}
+
+.type.type--poison {
+  background-color: #bd5fe9;
+}
+
+.type.type--water {
+  background-color: #58abf6;
+}
+
+.type.type--normal {
+  background-color: #888;
+}
+
+.active {
+  outline: 2px solid #3c5aa6;
+  border-color: transparent;
+}
+
+.active::before {
+  content: "\2714 \fe0e";
+  float: left;
+  width: 22px;
+  margin-left: -22px;
 }
