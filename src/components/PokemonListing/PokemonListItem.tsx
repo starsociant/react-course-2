@@ -7,7 +7,7 @@ export interface PokemonItemProps {
   image: string;
   name: string;
   types: string[];
-  isFav: boolean;
+  isFav?: boolean;
 }
 
 export default function PokemonListItem({

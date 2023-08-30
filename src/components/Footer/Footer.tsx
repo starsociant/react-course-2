@@ -1,4 +1,6 @@
+import styles from './Footer.module.css';
+
 export default function Footer() {
   const year = new Date().getFullYear();
-  return <footer>{year} | CI&T ©</footer>;
+  return <footer className={styles.Footer}>{year} | CI&T ©</footer>;
 }

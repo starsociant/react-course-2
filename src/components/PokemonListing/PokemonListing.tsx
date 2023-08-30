@@ -1,20 +1,24 @@
-import PokemonListItem from "./PokemonListItem";
+import PokemonListItem, { PokemonItemProps } from "./PokemonListItem";
 import styles from "./PokemonsListing.module.css";
-import pokemons from "../../pokemons.json";
 
-export default function PokemonListing() {
+export default function PokemonListing({
+  pokemons,
+}: {
+  pokemons: PokemonItemProps[];
+}) {
   return (
-    <div className={styles.Container}>
-      {pokemons.map((pokemon, i) => {
-        const isFav = Math.random() < 0.5;
-        return (
-          <PokemonListItem
-            {...pokemon}
-            key={`pokemonslist-item-${i}`}
-            isFav={isFav}
-          />
-        );
-      })}
-    </div>
+    <>
+      <div className={styles.Container}>
+        {!!pokemons.length ? (
+          pokemons.map((pokemon, i) => {
+            return (
+              <PokemonListItem {...pokemon} key={`pokemonslist-item-${i}`} />
+            );
+          })
+        ) : (
+          <h4 className={styles.NoData}>No data to display</h4>
+        )}
+      </div>
+    </>
   );
 }
