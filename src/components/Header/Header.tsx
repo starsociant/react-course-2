@@ -5,9 +5,10 @@ import { NavItemInterface } from "../../interfaces";
 interface HeaderProps {
   name?: string;
   navItems: NavItemInterface[];
+  login: (p: { name: string }) => string;
 }
 
-export default function Header({ name, navItems }: HeaderProps) {
+export default function Header({ name, login, navItems }: HeaderProps) {
   return (
     <header className={styles.Header}>
       <div className={styles.Container}>
@@ -18,7 +19,11 @@ export default function Header({ name, navItems }: HeaderProps) {
             ))}
           </ul>
         </nav>
-        {name ? <div className="greeting">Olá {name}</div> : null}
+        {name ? (
+          <div className="greeting">Olá {name}</div>
+        ) : (
+          <button onClick={() => login({ name: "Saulo" })}>Login</button>
+        )}
       </div>
     </header>
   );
