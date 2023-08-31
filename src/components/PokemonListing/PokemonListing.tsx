@@ -3,13 +3,17 @@ import styles from "./PokemonsListing.module.css";
 
 export default function PokemonListing({
   pokemons,
+  loading = true,
 }: {
   pokemons: PokemonItemProps[];
+  loading: boolean;
 }) {
   return (
     <>
       <div className={styles.Container}>
-        {!!pokemons.length ? (
+        {loading ? (
+          <h4 className={styles.NoData}>Loading...</h4>
+        ) : !!pokemons.length ? (
           pokemons.map((pokemon, i) => {
             return (
               <PokemonListItem {...pokemon} key={`pokemonslist-item-${i}`} />

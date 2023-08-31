@@ -15,7 +15,7 @@ export default function Header({ name, login, navItems }: HeaderProps) {
         <nav>
           <ul className={`${styles.List}`}>
             {navItems.map((item, i) => (
-              <NavItem {...item}></NavItem>
+              <NavItem key={i} {...item}></NavItem>
             ))}
           </ul>
         </nav>
